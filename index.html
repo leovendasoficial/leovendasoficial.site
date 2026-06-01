@@ -1,12 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>leovendas oficial</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Loja</title>
+  <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
-    <p>testando nosso site</p>
-    <p>leovendasoficial</p>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <span class="logo"></span>
+        <div>
+          <div id="brandTitle" class="brand-title">SUA LOJA</div>
+          <div id="brandSub" class="brand-sub">Recursos digitais • Texturas • Packs</div>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <input id="searchInput" class="search" placeholder="Buscar produtos..." />
+        <button id="cartBtn" class="cart-btn">
+          Carrinho <span id="cartCount" class="badge">0</span>
+        </button>
+        <a class="btn btn-ghost" href="./admin.html" title="Área administrativa">Admin</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-card">
+        <h1>Recursos digitais prontos pra usar</h1>
+        <p>Texturas, bundles e kits para deixar suas artes mais profissionais.</p>
+        <div class="hero-row">
+          <select id="categorySelect" class="select">
+            <option value="">Todas as categorias</option>
+          </select>
+          <button id="reloadBtn" class="btn">Atualizar</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div id="grid" class="grid"></div>
+      <div id="empty" class="empty hidden">Nenhum produto encontrado.</div>
+    </section>
+  </main>
+
+  <!-- Drawer do carrinho -->
+  <aside id="cartDrawer" class="drawer hidden">
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <div class="drawer-title">Seu carrinho</div>
+        <button id="closeCart" class="icon-btn">✕</button>
+      </div>
+
+      <div id="cartItems" class="cart-items"></div>
+
+      <div class="cart-footer">
+        <div class="totals">
+          <span>Total</span>
+          <strong id="cartTotal">R$ 0,00</strong>
+        </div>
+
+        <button id="checkoutWhats" class="btn btn-primary">Finalizar no WhatsApp</button>
+        <button id="checkoutPix" class="btn btn-ghost">Ver Pix</button>
+      </div>
+    </div>
+
+    <div class="drawer-backdrop"></div>
+  </aside>
+
+  <!-- Modal Pix -->
+  <div id="pixModal" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-head">
+        <strong>Pagamento via Pix</strong>
+        <button id="closePix" class="icon-btn">✕</button>
+      </div>
+      <p class="muted">Copie a chave Pix e envie o comprovante no WhatsApp.</p>
+      <div class="row">
+        <div class="field">
+          <label class="muted small">Chave Pix</label>
+          <input id="pixKey" readonly value="SUA_CHAVE_PIX_AQUI" />
+        </div>
+      </div>
+      <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+        <button id="copyPix" class="btn btn-primary">Copiar chave</button>
+        <button id="openWhatsFromPix" class="btn btn-ghost">Abrir WhatsApp</button>
+      </div>
+      <p class="muted small" style="margin-top:10px">Você pode mudar WhatsApp, chave Pix, cor e nome da loja em <b>Admin</b>.</p>
+    </div>
+    <div class="modal-backdrop"></div>
+  </div>
+
+  <script src="./js/api.js"></script>
+  <script src="./js/cart.js"></script>
+  <script src="./js/main.js"></script>
 </body>
 </html>
