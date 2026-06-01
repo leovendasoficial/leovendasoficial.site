@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin • Loja</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <span class="logo"></span>
+        <div>
+          <div class="brand-title">ADMIN</div>
+          <div class="brand-sub">Gerenciar produtos e configurações</div>
+        </div>
+      </div>
+      <div class="top-actions" style="min-width:unset">
+        <a class="btn btn-ghost" href="./index.html">Voltar para loja</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-card">
+        <h1 style="margin-bottom:8px">Login</h1>
+        <p class="muted">Padrão: <b>admin</b> / <b>admin123</b> (troque no servidor depois).</p>
+        <div class="row">
+          <div class="field">
+            <label class="muted small">Usuário</label>
+            <input id="adminUser" value="admin" />
+          </div>
+          <div class="field">
+            <label class="muted small">Senha</label>
+            <input id="adminPass" type="password" value="admin123" />
+          </div>
+          <div class="field" style="min-width:140px;flex:0">
+            <label class="muted small">&nbsp;</label>
+            <button id="loginBtn" class="btn btn-primary">Entrar</button>
+          </div>
+        </div>
+        <div id="loginStatus" class="muted small" style="margin-top:8px"></div>
+      </div>
+    </section>
+
+    <section class="hero">
+      <div class="hero-card">
+        <h1 style="margin-bottom:8px">Configurações</h1>
+        <div class="row">
+          <div class="field">
+            <label class="muted small">Nome da loja</label>
+            <input id="storeName" placeholder="SUA LOJA" />
+          </div>
+          <div class="field">
+            <label class="muted small">Subtítulo</label>
+            <input id="storeSub" placeholder="Recursos digitais • ..." />
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label class="muted small">Cor principal</label>
+            <input id="accentColor" placeholder="#ff2d2d" />
+          </div>
+          <div class="field">
+            <label class="muted small">WhatsApp (DDI+DDD+Número)</label>
+            <input id="whatsPhone" placeholder="5571999999999" />
+          </div>
+          <div class="field">
+            <label class="muted small">Chave Pix</label>
+            <input id="pixKey" placeholder="SUA_CHAVE_PIX_AQUI" />
+          </div>
+        </div>
+        <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+          <button id="saveSettingsBtn" class="btn btn-primary">Salvar configurações</button>
+          <span class="pill">API: <span id="apiBaseLabel"></span></span>
+        </div>
+        <div id="settingsStatus" class="muted small" style="margin-top:8px"></div>
+      </div>
+    </section>
+
+    <section class="hero">
+      <div class="hero-card">
+        <h1 style="margin-bottom:8px">Produtos</h1>
+        <p class="muted">Adicionar/editar/deletar produtos.</p>
+
+        <div class="row">
+          <div class="field">
+            <label class="muted small">Título</label>
+            <input id="pTitle" />
+          </div>
+          <div class="field">
+            <label class="muted small">Slug (opcional)</label>
+            <input id="pSlug" placeholder="deixe vazio pra gerar" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label class="muted small">Categoria</label>
+            <input id="pCategory" value="Geral" />
+          </div>
+          <div class="field">
+            <label class="muted small">Preço</label>
+            <input id="pPrice" type="number" step="0.01" />
+          </div>
+          <div class="field">
+            <label class="muted small">Imagem (URL)</label>
+            <input id="pImage" placeholder="https://..." />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field" style="flex:1;min-width:260px">
+            <label class="muted small">Descrição</label>
+            <textarea id="pDesc"></textarea>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button id="createBtn" class="btn btn-primary">Criar produto</button>
+          <button id="updateBtn" class="btn btn-ghost hidden">Salvar edição</button>
+          <button id="cancelBtn" class="btn btn-ghost hidden">Cancelar</button>
+          <span class="pill">Editando ID: <span id="editId">—</span></span>
+        </div>
+
+        <div id="prodStatus" class="muted small" style="margin-top:8px"></div>
+
+        <div style="margin-top:16px;overflow:auto">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Categoria</th>
+                <th>Preço</th>
+                <th>Ativo</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="prodTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./js/api.js"></script>
+  <script src="./js/admin.js"></script>
+</body>
+</html>
